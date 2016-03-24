@@ -1,0 +1,31 @@
+digraph OSM {
+  node [shape=record];
+     Cxl_acked [shaper=ellipse];
+     Filled [shape=box];
+     OOM  -> Float_sent [label="Float order"]
+     Float_sent -> Float_acked [label="Float acked"]
+     Float_sent -> Float_sent [label="Partial fill"]
+     Float_acked -> Float_acked [label="Partial fill"]
+     Float_sent -> Float_rejected [label="Float rejected"]
+     Float_acked -> Cxl_sent [label="Cxl sent"]
+     Float_acked -> Modify_sent [label="Modify order"]
+     Cxl_sent -> Cxl_acked [label="Cxl acked"]
+     Cxl_sent -> Cxl_rejected [label="Cxl rejected"]
+     Cxl_sent -> Cxl_sent [label="Partial fill"]
+     Cxl_rejected -> Cxl_rejected [label="Partial fill"]
+     Modify_sent -> Modify_acked [label="Modify acked"]
+     Modify_sent -> Modify_rejected [label="Modify rejected"]
+     Modify_rejected -> Modify_rejected [label="Parital fill"]
+     Modify_acked -> Modify_acked [label="Partial fill"]
+     Modify_sent -> Modify_sent [label="Partial fill"]
+     Float_sent -> Filled [label="Complete fill"]
+     Float_acked -> Filled [label="Complete fill"]
+     Cxl_sent -> Filled [label="Complete fill"]
+     Cxl_rejected -> Filled [label="Complete fill"]
+     Modify_sent -> Filled [label="Complete fill"]
+     Modify_acked -> Filled [label="Complete fill"]
+     Modify_rejected -> Filled [label="Complete fill"]
+     
+     
+     Filled [shape=circle]
+}
