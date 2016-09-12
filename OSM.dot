@@ -1,5 +1,12 @@
 digraph OSM {
-  node [shape=record];
+     node [shape=record];
+
+     { rank = same; OOM; }
+     { rank = same; Float_sent; }
+     { rank = same; Float_acked; Float_rejected; }
+     { rank = same; Cxl_sent; Modify_sent; }
+     { rank = same; Cxl_acked; Cxl_rejected; Modify_acked; Modify_rejected; }
+     { rank = same; Filled; }
      Cxl_acked [shaper=ellipse];
      Filled [shape=box];
      OOM  -> Float_sent [label="Float order"]
